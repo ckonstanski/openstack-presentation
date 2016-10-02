@@ -7,38 +7,36 @@ that. What differentiates a virtual machine farm from a cloud is the
 tooling and automation that makes it possible for users to manage all
 aspects of their VMs without the intervention of a system
 administrator. The management of the VMs themselves, networking,
-storage volumes, SSH keys and more is controlled by tooling that is
-accessible to the user via a web UI, CLI, REST API, programming API
-and orchestration services.
+storage volumes, object storage, SSH keys and more is controlled by
+tooling that is accessible to the user via a web UI, CLI, REST API,
+programming API and orchestration services.
 
 There are several public cloud platforms in existence. Azure,
 Rackspace, AWS and Google Cloud are a few of the most popular. But if
 you want to run your own private cloud, there are two clear choices:
 Azure or OpenStack.
 
-OpenStack is the cloud platform that many public cloud providers
-use. Rackspace and NASA invented it in 2010. There are a plethora of
-hosting providers both big and small that use OpenStack without
-necessarily advertising it as a cloud.
-
-But the real interest in OpenStack is for implementing your own
-private cloud. There are all sorts of good business reasons to do so,
-but that is a topic for another presentation.
-
 Once you decide you want to build a private cloud, your choices are:
 pay Microsoft for an Azure license, or pay with sweat equity for
 OpenStack. I'm not going to lie to you: implementing OpenStack is not
 easy. But it is free and open source. And there is a massive community
 working on it at all times. It is stable and mature enough for
-companies like CERN, GoDaddy, Charter, Comcast, Verizon, Walmart,
-Volkswagen and many others to bet their businesses on it.
+companies like Rackspace, CERN, GoDaddy, Charter, Comcast, Verizon,
+Walmart, Volkswagen and many others to bet their businesses on it.
+
+## Evolution of the Cloud
+
+It is useful to understand why we have cloud platforms. They evolved
+to solve very real business problems. IT and baremetal solutions just
+aren't fast enough to keep up with today's business requirements. The
+cloud is the answer to self-service computing infrastructure.
 
 ## Basic Components of An OpenStack Cloud
 
 We'll tackle this from top down, starting with an abstract overview
 and finishing with the nuts and bolts at the OS level.
 
-### Abstract Requirements
+### Generic Requirements
 
 * Virtual machines
   * Images
@@ -54,7 +52,7 @@ and finishing with the nuts and bolts at the OS level.
 * Firewall (between projects, between VMs and control plane)
 * DNS
 * Orchestration
-* User interface
+* Dashboard
 * APIs
 * Authentication
 
@@ -70,7 +68,7 @@ developers who work on the code and the tooling built around the code
 repositories, we would call them "projects". Each of these modules has
 its own project in GitHub.
 
-* Keystone
+* Keystone (authentication)
 * Nova (compute)
 * Glance (images)
 * Cinder (block storage)
@@ -79,7 +77,7 @@ its own project in GitHub.
 * Designate (DNS)
 * Heat (orchestration)
 * Ceilometer (telemetry)
-* Horizon
+* Horizon (dashboard)
 * CLI
 * REST APIs
 * Python modules
@@ -229,4 +227,13 @@ restore RabbitMQ you don't worry about restoring data.
 
 ### Python
 
-All of the OpenStack code is written in Python.
+All of the OpenStack projects are written in Python. There are tools
+that OpenStack uses that are written in other languages. For instance
+Puppet is written in Clojure and JRuby, Jenkins is written in Java,
+and RabbitMQ is written in Erlang. But those are third-party
+applications. If it's in the OpenStack github project, it's
+python. This is useful to know because if you spend enough time in
+OpenStack, you will eventually want to fix something. There is an
+entire process for getting approved as a code contributer. Anyone with
+enough patience can do it. The process is a bit bureaucratic, but it's
+open to anyone.

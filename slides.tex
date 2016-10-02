@@ -1,0 +1,159 @@
+\documentclass[helvetica,english,utf8,notitle,nologo]{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+
+\begin{document}
+
+\title{Intro to OpenStack}
+\author{Carlos Konstanski}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Presentation Materials Available Online At:}
+  \href{url}{https://github.com/ckonstanski/openstack-presentation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{VM Platform vs. Cloud Platform}
+  VM Platform:
+  \begin{itemize}
+  \item Managed by IT
+    \begin{itemize}
+    \item VMs
+    \item ISOs/images
+    \item Rudimentary networking
+    \item Use pre-allocated storage
+    \end{itemize}
+  \end{itemize}
+  Cloud:
+  \begin{itemize}
+  \item Managed by end users
+    \begin{itemize}
+    \item VMs
+    \item images
+    \item Advanced networking
+    \item Advanced storage
+    \item Object storage
+    \item SSH keypair management
+    \item APIs
+    \item Orchestration
+    \item Dashboard
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proprietary Public Cloud Platforms}
+  \begin{itemize}
+  \item Microsoft Azure
+  \item Rackspace
+  \item Amazon Web Services
+  \item Google Cloud
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Private Cloud Platforms}
+  \begin{itemize}
+  \item Microsoft Azure (\$\$\$)
+  \item OpenStack (sweat)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evolution of the Cloud}
+  \begin{enumerate}
+  \item Baremetal servers in datacenters
+    \begin{itemize}
+    \item Costly
+    \item 4-8 weeks from request to delivery
+    \end{itemize}
+  \item Non-cloud virtualization controlled by IT
+    \begin{itemize}
+    \item Cheaper
+    \item Shorter time to delivery, but still moves at the speed of IT
+    \end{itemize}
+  \item Users abandoning IT in favor of public cloud providers
+    \begin{itemize}
+    \item More expensive than non-cloud virtualization, but cheaper
+      than baremetal
+    \item Instant push-button delivery
+    \item Source of great conflict between users and IT
+    \end{itemize}
+  \item Private cloud platforms in the enterprise
+    \begin{itemize}
+    \item More expensive than non-cloud virtualization, but cheaper
+      than public cloud
+    \item Instant push-button delivery
+    \item No more conflict between users and IT
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic Compunents of an OpenStack Cloud}
+  \framesubtitle{Generic Cloud Requirements}
+  \begin{itemize}
+  \item Virtual Machines
+    \begin{itemize}
+    \item Images
+    \item Flavors
+    \end{itemize}
+  \item Storage
+    \begin{itemize}
+    \item Block stroage
+    \item Object storage
+    \end{itemize}
+  \item Networking
+    \begin{itemize}
+    \item Internal subnets
+    \item Routers
+    \end{itemize}
+  \item Secure console/shell access to VMs
+  \item Firewall (between projects, between VMs and control plane)
+  \item DNS
+  \item Orchestration
+  \item Dashboard
+  \item APIs
+  \item Authentication
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic Compunents of an OpenStack Cloud}
+  \framesubtitle{Generic Cloud Requirements}
+  \begin{itemize}
+    \item Keystone (authentication)
+    \item Nova (compute)
+    \item Glance (images)
+    \item Cinder (block storage)
+    \item Swift (object storage)
+    \item Neutron (networking)
+    \item Designate (DNS)
+    \item Heat (orchestration)
+    \item Ceilometer (telemetry)
+    \item Horizon (dashboard)
+    \item CLI
+    \item REST APIs
+    \item Python modules
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic Compunents of an OpenStack Cloud}
+  \framesubtitle{Generic Cloud Requirements}
+  \begin{itemize}
+  \item QEMU/KVM
+  \item libvirt
+  \item iptables
+  \item OpenVSwitch
+  \item VLAN
+  \item Network namespaces
+  \item MySQL
+  \item RabbitMQ
+  \item Python
+  \end{itemize}
+\end{frame}
+
+\end{document}
